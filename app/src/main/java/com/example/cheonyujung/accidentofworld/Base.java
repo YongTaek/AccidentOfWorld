@@ -95,7 +95,6 @@ public class Base extends AppCompatActivity implements GoogleApiClient.OnConnect
     private void signIn(GoogleApiClient mGoogleApiClient) {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, 9001);
-        System.out.println("!");
     }
     @Override
     public void onStart() {
@@ -103,7 +102,6 @@ public class Base extends AppCompatActivity implements GoogleApiClient.OnConnect
 
         OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
         if (opr.isDone()) {
-
             GoogleSignInResult result = opr.get();
             handleSignInResult(result);
         } else {
@@ -125,7 +123,6 @@ public class Base extends AppCompatActivity implements GoogleApiClient.OnConnect
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == 9001) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            System.out.println(resultCode + "!!");
             handleSignInResult(result);
         }
     }
@@ -202,7 +199,7 @@ public class Base extends AppCompatActivity implements GoogleApiClient.OnConnect
         return super.onOptionsItemSelected(item);
     }
 
-        @Override
+    @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
     }

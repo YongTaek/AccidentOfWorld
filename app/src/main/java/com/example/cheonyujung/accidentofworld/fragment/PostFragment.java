@@ -204,6 +204,18 @@ public class PostFragment extends Fragment{
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(Base.user!=null) {
+            postModify.setVisibility(View.VISIBLE);
+            postDelete.setVisibility(View.VISIBLE);
+        }else{
+            postModify.setVisibility(View.GONE);
+            postDelete.setVisibility(View.GONE);
+        }
+    }
+
     public void setVisibleEmptyView() {
         if(commentAdapter.getCount() == 0){
             textView.setVisibility(View.VISIBLE);

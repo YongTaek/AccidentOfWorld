@@ -13,6 +13,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1095837827730-4u1a4eavjuqivudumm5fdb3g8gtdsrbo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cheonyujung.accidentofworld",
+            "certificate_hash": "C85418E75F2B982588C14E9736E410F0735EC352"
+          }
+        },
+        {
           "client_id": "1095837827730-ffm74eot7gbbb5nlto3v9pjhquaiu14k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -100,6 +100,7 @@ public class CountryInfoFragment extends CustomViewPagerBaseFragment {
         mHeader.setTranslationY(translationY);
         mTopView.setTranslationY(-translationY / 3);
     }
+
     @Override
     protected void setupAdapter() {
         if (mAdapter == null) {
@@ -127,9 +128,6 @@ public class CountryInfoFragment extends CustomViewPagerBaseFragment {
     public Bundle getBundle(){
         return bundle;
     }
-
-
-
 
     private static class ViewPagerAdapter extends CustomFragmentPagerAdapter {
 

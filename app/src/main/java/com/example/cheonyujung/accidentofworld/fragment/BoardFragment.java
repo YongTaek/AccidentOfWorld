@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.cheonyujung.accidentofworld.Base;
 import com.example.cheonyujung.accidentofworld.PostAdapter;
 import com.example.cheonyujung.accidentofworld.R;
 import com.example.cheonyujung.accidentofworld.data.struct.Post;
@@ -46,7 +47,11 @@ public class BoardFragment extends Fragment {
         button.setTextSize(20);
         button.setGravity(Gravity.CENTER);
         button.setBackgroundColor(Color.parseColor("#D3D3D3"));
-        postList.addHeaderView(button);
+        if(Base.user!=null) {
+            postList.addHeaderView(button);
+        }else{
+            postList.removeHeaderView(button);
+        }
         textView = (TextView) view.findViewById(R.id.noPost);
 
 
@@ -67,7 +72,11 @@ public class BoardFragment extends Fragment {
 
                 Intent intent = new Intent(getActivity(), PostActivity.class);
                 Bundle bundle1 = new Bundle();
-                bundle1.putLong("post_id", postAdapter.getPost_id(i - 1));
+                if(Base.user!=null) {
+                    bundle1.putLong("post_id", postAdapter.getPost_id(i - 1));
+                }else{
+                    bundle1.putLong("post_id", postAdapter.getPost_id(i));
+                }
                 bundle1.putString("country_name", bundle.getString("CountryName"));
                 bundle1.putInt("list_position", i);
                 intent.putExtras(bundle1);
@@ -111,6 +120,7 @@ public class BoardFragment extends Fragment {
                     post.setTitle(title);
                     post.setBoard(board_id);
                     postAdapter.addPost(post);
+                    setVisibleEmptyView();
                 } else if (resultCode == 2) {
                     Bundle bundle = data.getExtras();
                     String content = bundle.getString("post_content");
@@ -141,6 +151,8 @@ public class BoardFragment extends Fragment {
         if (postAdapter.getCount() == 0) {
             textView.setVisibility(View.VISIBLE);
             textView.setGravity(Gravity.CENTER_HORIZONTAL);
+        }else{
+            textView.setVisibility(View.GONE);
         }
 
     }
